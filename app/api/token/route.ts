@@ -43,8 +43,7 @@ export async function POST(req: Request) {
       ? RoomConfiguration.fromJson(body.room_config, { ignoreUnknownFields: true })
       : new RoomConfiguration();
 
-    const agentName =
-      roomConfig.agents?.[0]?.agentName || process.env.AGENT_NAME || 'Ultron';
+    const agentName = roomConfig.agents?.[0]?.agentName || process.env.AGENT_NAME || 'Ultron';
 
     if (!roomConfig.agents || roomConfig.agents.length === 0) {
       roomConfig.agents = [new RoomAgentDispatch({ agentName })];
